@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     [Header("인풋 시스템")]
     [SerializeField] private InputReader _inputReader;
 
-    private Vector3 _InputVector;
-    private Vector3 _moveVector;
+    public Vector3 _InputVector;
+    public Vector3 _moveVector;
+    private Quaternion targetRotation = Quaternion.identity;
 
     private Rigidbody _Rigid;
     private Transform _CarmeraObject;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
         Quaternion targetrotation = Quaternion.Euler(0, _CarmeraObject.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetrotation, rotationspeed * Time.deltaTime);
+
     }
 
     #region Input 이벤트
